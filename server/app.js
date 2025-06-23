@@ -2,13 +2,10 @@ import express from 'express'
 const app = express()
 const port = 3000
 
-import registerRoute from './routes/register.js'
-import resetRoute from './routes/reset.js';
+import authRoute from './routes/index.js'
 
 app.use(express.json())
-app.use(registerRoute)
-
-app.use(resetRoute);
+app.use(authRoute)
 
 
 app.listen(port, () => {
