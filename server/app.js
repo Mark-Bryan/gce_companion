@@ -11,9 +11,10 @@ app.use('/api/auth', authRoute);
 app.get('/', (req, res) => {
     res.send('Welcome to the API! Use /api/auth for authentication routes.')
 })
-
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-})
+if (require.main === module) {
+    app.listen(port, () => {
+        console.log(`Example app listening on port ${port}`)
+    })
+}
 
 module.exports = app;
