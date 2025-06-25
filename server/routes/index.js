@@ -6,7 +6,7 @@ import { login } from '../../src/handlers/auth/login.js';
 const router = express.Router();
 
 // Registration route
-router.post('/api/auth/register', register);
-router.post('/api/auth/reset-password', passwordReset);
-router.post('/api/auth/login', login)
+router.post('/register', register);
+router.post('/reset-password', passwordReset);
+router.post('/login', login);
 export default router;
