@@ -11,6 +11,12 @@ app.use('/api/auth', authRoute);
 app.get('/', (req, res) => {
     res.send('Welcome to the API! Use /api/auth for authentication routes.')
 })
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-})
+
+
+if (process.env.RENDER === 'true' || process.env.NODE_ENV === 'production') {
+    app.listen(port, () => {
+        console.log(`Server is running in production mode on port ${port}`);
+    })
+}
+
+export default app;
