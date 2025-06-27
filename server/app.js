@@ -13,9 +13,9 @@ app.get('/', (req, res) => {
 })
 
 
-if (process.env.RENDER === 'true' || process.env.NODE_ENV === 'production') {
+if (process.env.RENDER === 'true' || process.env.NODE_ENV !== 'production') {
     app.listen(port, () => {
-        console.log(`Server is running in production mode on port ${port}`);
+        console.log(`Server is running in development mode on port ${port}`);
     })
 }
 
