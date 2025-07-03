@@ -4,12 +4,9 @@ import { collection, where, addDoc, query, getDocs } from 'firebase/firestore';
 
 export async function register(req, res) {
     try {
-        const { username, email, password, classLevel, subjects } = req.body;
-        if (!username || !email || !password || !classLevel) return res.status(400).json({error: 'All fields are required'})
+        const { username, email, password, phoneNumber } = req.body;
+        if (!username || !email || !password || !phoneNumber) return res.status(400).json({error: 'All fields are required'})
         
-        if (subjects.length < 1) {
-            throw new Error('Please, add atleast a subject.')
-        }
         const usernameQuery = query(collection(db, 'users'), where ('username', '==', username))
         const emailQuery = query(collection(db, 'users'), where ('email', '==', email))
 
@@ -23,9 +20,9 @@ export async function register(req, res) {
         const newUser = {
             username: username,
             email: email,
-            password: hashedPassword,
-            class: classLevel,
-            subjects: subjects
+            phoneNumber: phoneNumber,
+            password: hashedPassword
+            
         };
 
         const docRef = await addDoc(collection(db, 'users'), newUser);
