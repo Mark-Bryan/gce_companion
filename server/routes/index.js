@@ -17,6 +17,6 @@ router.post('/reset-password', passwordReset);
 router.get('/users', getAllUsers);
 router.post('/createUser', createUser);
 router.get('/users/:id', getUserById);
-router.patch('/users/:id', updateUser);
+router.put('/users/:id', updateUser);
 
 export default router;
